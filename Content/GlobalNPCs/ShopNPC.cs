@@ -1,7 +1,5 @@
 ﻿using Moreplugins.Content.Items.Accessories;
 using Moreplugins.Content.Pets;
-using Terraria;
-using Terraria.Chat;
 using Terraria.ID;
 using Terraria.ModLoader;
 

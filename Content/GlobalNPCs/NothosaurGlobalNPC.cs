@@ -2,8 +2,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using Moreplugins.Content.Items.Accessories;
 
-namespace Moreplugins.Content.Items.Accessories
+namespace Moreplugins.Content.GlobalNPCs
 {
     /// <summary>
     /// 敌怪掉落配置
