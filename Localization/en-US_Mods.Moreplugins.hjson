@@ -163,6 +163,11 @@ Items: {
 		DisplayName: Enchanted Plusins
 		Tooltip: ""
 	}
+
+	PumpkinCandlePlugins: {
+		DisplayName: Pumpkin Candle Plugins
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
