@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 
 namespace Moreplugins.Content.Items.Accessories
@@ -12,13 +13,10 @@ namespace Moreplugins.Content.Items.Accessories
 
     {
         public override void SetDefaults()
-        {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
+        { 
             Item.rare = ItemRarityID.Pink; // 粉色稀有度
             Item.value = Item.sellPrice(gold: 15); // 售价15金币
+            base.SetDefaults();
         }
         public override void AddRecipes()
         {
@@ -28,7 +26,7 @@ namespace Moreplugins.Content.Items.Accessories
         {
             base.UpdateAccessory(player, hideVisual);
             // 标记饰品已装备
-            player.GetModPlayer<PluginsPlayer>().budEquipped = true;
+            player.MPPlayer().budEquipped = true;
         }
     }
 }

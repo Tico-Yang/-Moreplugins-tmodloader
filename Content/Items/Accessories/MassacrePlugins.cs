@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -10,16 +11,13 @@ namespace Moreplugins.Content.Items.Accessories
     /// <summary>
     /// Massacre饰品
     /// </summary>
-    internal class MassacrePlugins : BasicPlugins
+    public class MassacrePlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Orange; // 橙色稀有度
             Item.value = Item.sellPrice(gold: 3); // 售价3金币
+            base.SetDefaults();    
         }
 
         public override void AddRecipes()
@@ -41,7 +39,7 @@ namespace Moreplugins.Content.Items.Accessories
             player.statDefense += 2;
 
             // 标记饰品已装备
-            player.GetModPlayer<PluginsPlayer>().massacreEquipped = true;
+            player.MPPlayer().massacreEquipped = true;
         }
     }
 }

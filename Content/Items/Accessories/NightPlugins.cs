@@ -5,41 +5,39 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
     /// <summary>
     /// Night饰品 - 夜晚饰品
     /// </summary>
-    internal class NightPlugins : BasicPlugins
+    public class NightPlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Orange; // 橙色稀有度
             Item.value = Item.sellPrice(gold: 5); // 售价5金币
+            base.SetDefaults();    
         }
 
         public override void AddRecipes()
         {
             // 第一个合成配方：使用屠戮
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<LeafPlugins>(), 1)       // 1个树叶
-                .AddIngredient(ModContent.ItemType<LavaSeedPlugins>(), 1)    // 1个熔岩之心
-                .AddIngredient(ModContent.ItemType<KaishakuninPlugins>(), 1) // 1个刽子手
-                .AddIngredient(ModContent.ItemType<MassacrePlugins>(), 1)    // 1个屠戮
+                .AddIngredient(ItemType<LeafPlugins>(), 1)       // 1个树叶
+                .AddIngredient(ItemType<LavaSeedPlugins>(), 1)    // 1个熔岩之心
+                .AddIngredient(ItemType<KaishakuninPlugins>(), 1) // 1个刽子手
+                .AddIngredient(ItemType<MassacrePlugins>(), 1)    // 1个屠戮
                 .AddTile(TileID.DemonAltar)                                         // 恶魔祭坛合成
                 .Register();
 
             // 第二个合成配方：使用阴暗的茄子
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<LeafPlugins>(), 1)       // 1个树叶
-                .AddIngredient(ModContent.ItemType<LavaSeedPlugins>(), 1)    // 1个熔岩之心
-                .AddIngredient(ModContent.ItemType<KaishakuninPlugins>(), 1) // 1个刽子手
-                .AddIngredient(ModContent.ItemType<ShadowyeggplantPlugins>(), 1) // 1个阴暗的茄子
+                .AddIngredient(ItemType<LeafPlugins>(), 1)       // 1个树叶
+                .AddIngredient(ItemType<LavaSeedPlugins>(), 1)    // 1个熔岩之心
+                .AddIngredient(ItemType<KaishakuninPlugins>(), 1) // 1个刽子手
+                .AddIngredient(ItemType<ShadowyeggplantPlugins>(), 1) // 1个阴暗的茄子
                 .AddTile(TileID.DemonAltar)                                         // 恶魔祭坛合成
                 .Register();
         }
@@ -65,7 +63,7 @@ namespace Moreplugins.Content.Items.Accessories
             player.buffImmune[BuffID.Burning] = true;
 
             // 标记饰品已装备
-            player.GetModPlayer<PluginsPlayer>().nightEquipped = true;
+            player.MPPlayer().nightEquipped = true;
         }
     }
 }

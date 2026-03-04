@@ -10,6 +10,11 @@ namespace Moreplugins.Content.Items.Accessories
         /// 将物品的本地化路径重新导向到这个路径之下
         /// </summary>
         public new string LocalizationCategory => "Items.Accessories";
+        public override void SetDefaults()
+        {
+            Item.width = Item.height = 32;
+            Item.accessory = true;
+        }
         public override bool CanAccessoryBeEquippedWith(Item equippedItem, Item incomingItem, Player player)
         {
             if (equippedItem.ModItem is BasicPlugins && incomingItem.ModItem is BasicPlugins)

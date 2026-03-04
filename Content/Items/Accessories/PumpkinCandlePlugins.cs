@@ -6,16 +6,13 @@ using Terraria.ModLoader;
 
 namespace Moreplugins.Content.Items.Accessories
 {
-    internal class PumpkinCandlePlugins : BasicPlugins
+    public class PumpkinCandlePlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true;
             Item.value = Item.sellPrice(gold: 1);
             Item.rare = ItemRarityID.Orange;
+            base.SetDefaults();    
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

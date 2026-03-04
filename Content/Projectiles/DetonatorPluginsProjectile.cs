@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Moreplugins.Assets.Textures;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -6,8 +7,9 @@ using Terraria.ModLoader;
 
 namespace Moreplugins.Content.Projectiles
 {
-    internal class DetonatorPluginsProjectile : ModProjectile
+    public class DetonatorPluginsProjectile : ModProjectile
     {
+        public override string Texture => MPTextureRegister.InvisAssetPath;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;

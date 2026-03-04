@@ -18,11 +18,9 @@ namespace Moreplugins.Content.Items.Accessories
 
         public override void SetDefaults()
         {
-            Item.width = 28;
-            Item.height = 28;
             Item.value = Item.sellPrice(gold: 1);
-            Item.accessory = true;
             Item.expert = true;
+            base.SetDefaults();    
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

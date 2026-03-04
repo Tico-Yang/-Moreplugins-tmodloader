@@ -13,12 +13,9 @@ namespace Moreplugins.Content.Items.Accessories
         #region 基础属性配置
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true;
             Item.rare = ItemRarityID.Green;
             Item.value = Item.sellPrice(gold: 10);
+            base.SetDefaults();    
         }
         #endregion
 

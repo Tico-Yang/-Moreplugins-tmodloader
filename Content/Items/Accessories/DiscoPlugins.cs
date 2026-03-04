@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 namespace Moreplugins.Content.Items.Accessories
 {
     /// <summary>
@@ -10,17 +11,14 @@ namespace Moreplugins.Content.Items.Accessories
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true;
+            base.SetDefaults();
             Item.rare = ItemRarityID.Red;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             base.UpdateAccessory(player, hideVisual);
-            player.GetModPlayer<PluginsPlayer>().discoEquipped = true;
+            player.MPPlayer().discoEquipped = true;
             player.maxTurrets += 1; // 增加一哨兵栏位
         }
     }

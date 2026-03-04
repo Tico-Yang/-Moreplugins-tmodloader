@@ -16,27 +16,17 @@ namespace Moreplugins.Content.Items.Accessories
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Blue; // 蓝色稀有度
             Item.value = Item.sellPrice(silver: 80); // 售价80银币
+            base.SetDefaults();
         }
 
         public override void AddRecipes()
         {
-            // 铁锭版本配方
-            CreateRecipe()
-                .AddIngredient(ItemID.IronBar, 5)       // 5个铁锭
-                .AddTile(TileID.Anvils)                 // 铁砧/铅砧合成
-                .Register();
-
-            // 铅锭版本配方（兼容铅锭）
-            CreateRecipe()
-                .AddIngredient(ItemID.LeadBar, 5)       // 5个铅锭
-                .AddTile(TileID.Anvils)                 // 铁砧/铅砧合成
-                .Register();
+            CreateRecipe().
+                AddRecipeGroup(RecipeGroupID.IronBar, 5).
+                AddTile(TileID.Anvils).
+                Register();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

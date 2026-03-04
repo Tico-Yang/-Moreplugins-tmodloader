@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
@@ -15,18 +16,15 @@ namespace Moreplugins.Content.Items.Accessories
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true;
             Item.rare = ItemRarityID.Red; // 红色稀有度
             Item.value = Item.sellPrice(gold: 100);
+            base.SetDefaults();
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             base.UpdateAccessory(player, hideVisual);
-            player.GetModPlayer<PluginsPlayer>().unityEquipped = true;
+            player.MPPlayer().unityEquipped = true;
 
             // 增加2仆从栏
             player.maxMinions += 2;

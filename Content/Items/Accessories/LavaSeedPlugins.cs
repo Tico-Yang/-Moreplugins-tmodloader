@@ -1,22 +1,20 @@
 using Terraria;
 using Terraria.ID;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
     /// <summary>
     /// LavaSeed饰品
     /// </summary>
-    internal class LavaSeedPlugins : BasicPlugins
+    public class LavaSeedPlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Orange; // 橙色稀有度
             Item.value = Item.sellPrice(gold: 3); // 售价3金币
+            base.SetDefaults();    
         }
 
         public override void AddRecipes()
@@ -39,7 +37,7 @@ namespace Moreplugins.Content.Items.Accessories
             player.endurance += 0.05f;
 
             // 标记饰品已装备
-            player.GetModPlayer<PluginsPlayer>().lavaSeedEquipped = true;
+            player.MPPlayer().lavaSeedEquipped = true;
         }
     }
 }

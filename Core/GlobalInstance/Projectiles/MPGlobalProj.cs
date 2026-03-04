@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Moreplugins.Content.Items.Accessories;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -20,7 +21,7 @@ namespace Moreplugins.Core.GlobalInstance.Projectiles
                 Player player = Main.player[projectile.owner];
                 if (player.active)
                 {
-                    PluginsPlayer modPlayer = player.GetModPlayer<PluginsPlayer>();
+                    PluginPlayer modPlayer = player.MPPlayer();
                     if (modPlayer.discoEquipped)
                     {
                         // 设置射弹伤害为500
@@ -42,7 +43,7 @@ namespace Moreplugins.Core.GlobalInstance.Projectiles
                 if (player.active)
                 {
                     // 检查玩家是否装备了核弹饰品
-                    PluginsPlayer modPlayer = player.GetModPlayer<PluginsPlayer>();
+                    PluginPlayer modPlayer = player.MPPlayer();
                     if (modPlayer.nuclearWarheadEquipped)
                     {
                         // 生成爆炸效果，扩大攻击范围（增加30%）

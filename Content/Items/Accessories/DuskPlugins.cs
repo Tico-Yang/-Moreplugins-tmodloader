@@ -1,4 +1,5 @@
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,17 +14,14 @@ namespace Moreplugins.Content.Items.Accessories
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Yellow; // 黄色稀有度
             Item.value = Item.sellPrice(gold: 15); // 售价15金币
+            base.SetDefaults();
         }
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<NightPlugins>(), 1)       // 1个夜晚
+                .AddIngredient(ItemType<NightPlugins>(), 1)       // 1个夜晚
                 .AddIngredient(ItemID.BrokenHeroSword, 1)                    // 1个断裂英雄剑
                 .AddIngredient(ItemID.FrostCore, 1)                         // 1个寒霜核
                 .AddIngredient(ItemID.Ichor, 10)                             // 10个灵液
@@ -56,7 +54,7 @@ namespace Moreplugins.Content.Items.Accessories
 
             // 标记饰品已装备
             base.UpdateAccessory(player, hideVisual);
-            player.GetModPlayer<PluginsPlayer>().duskEquipped = true;
+            player.MPPlayer().duskEquipped = true;
         }
     }
 }
