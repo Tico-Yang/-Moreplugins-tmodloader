@@ -1,10 +1,5 @@
-using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
-using Moreplugins.Content.Players;
 
 
 namespace Moreplugins.Content.Items.Accessories
@@ -27,9 +22,9 @@ namespace Moreplugins.Content.Items.Accessories
         }
         #endregion
 
-        #region 核心饰品效果
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            base.UpdateAccessory(player, hideVisual);
             // 提升10%移动速度
             player.moveSpeed += 0.1f;
             // 提升10%冲刺速度
@@ -38,11 +33,8 @@ namespace Moreplugins.Content.Items.Accessories
             player.wingTimeMax = (int)(player.wingTimeMax * 1.1f);
             // 提升10%飞行速度
             player.maxFallSpeed += 0.1f;
-            player.GetModPlayer<PluginsPlayer>().SoundAcc = true;
         }
-        #endregion
 
-        #region 合成配方
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -51,6 +43,5 @@ namespace Moreplugins.Content.Items.Accessories
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }
-        #endregion
     }
 }

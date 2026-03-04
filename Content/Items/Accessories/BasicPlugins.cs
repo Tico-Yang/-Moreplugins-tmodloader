@@ -20,7 +20,7 @@ namespace Moreplugins.Content.Items.Accessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<PluginsPlayer>().SoundAcc = true;
+            player.GetModPlayer<PluginsPlayer>().soundAcc = true;
         }
     }
 }

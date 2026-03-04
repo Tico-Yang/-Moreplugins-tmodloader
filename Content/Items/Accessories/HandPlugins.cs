@@ -1,8 +1,5 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
-using Moreplugins.Content.Players;
 
 namespace Moreplugins.Content.Items.Accessories
 {
