@@ -1,4 +1,4 @@
-﻿using Moreplugins.Core.GlobalInstance.Players;
+﻿using Moreplugins.Content.Players;
 using Terraria;
 
 namespace Moreplugins.Core.Utilities
