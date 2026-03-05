@@ -4,7 +4,7 @@ Projectiles: {
 }
 
 AccessorySlot: {
-	FunctionalSlot: 这是你的屁股
+	FunctionalSlot: 修改你的插件
 	VanitySlot: 装扮 插件
 	DyeSlot: 染料
 }
