@@ -18,7 +18,7 @@ namespace Moreplugins.Content.Items.Accessories
         {
             woodPluginsTime++;
             if(woodPluginsTime >= 1)
-                if(Main.rand.Next(100) <= 24)
+                if(Main.rand.NextBool(4))
                 {
                     player.AddBuff(BuffID.Tipsy, 1800);
                     woodPluginsTime = 0;

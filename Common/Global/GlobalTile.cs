@@ -15,7 +15,7 @@ namespace Moreplugins.Common.Global
             int y = j * 16;
             Tile tile = Main.tile[i, j];
 
-            if (type == Terraria.ID.TileID.Plants && tile.TileFrameX == 18 * 8 && Main.rand.Next(100) == 1)
+            if (type == Terraria.ID.TileID.Plants && tile.TileFrameX == 18 * 8 && Main.rand.NextBool(100))
             {
                 Item.NewItem(new EntitySource_TileBreak(i, j) ,x, y, 16, 16, ModContent.ItemType<MushroomPlugins>(), 1);
             }
