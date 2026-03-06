@@ -1,4 +1,5 @@
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 using Terraria;
 using Terraria.ID;
 
@@ -7,16 +8,13 @@ namespace Moreplugins.Content.Items.Accessories
     /// <summary>
     /// Shadowyeggplant饰品
     /// </summary>
-    internal class ShadowyeggplantPlugins : BasicPlugins
+    public class ShadowyeggplantPlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Purple; // 紫色稀有度
             Item.value = Item.sellPrice(gold: 4); // 售价4金币
+            base.SetDefaults();
         }
 
         public override void AddRecipes()
@@ -31,7 +29,7 @@ namespace Moreplugins.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             base.UpdateAccessory(player, hideVisual);
-            player.GetModPlayer<PluginsPlayer>().shadowyeggplantEquipped = true;
+            player.MPPlayer().shadowyeggplantEquipped = true;
             // 增加50点最大魔力值
             player.statManaMax2 += 50;
 
@@ -42,4 +40,4 @@ namespace Moreplugins.Content.Items.Accessories
             player.jumpSpeedBoost += 0.5f;
         }
     }
-}
+    }

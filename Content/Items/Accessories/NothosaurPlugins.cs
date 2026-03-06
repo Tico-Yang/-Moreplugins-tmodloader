@@ -1,22 +1,20 @@
 using Terraria;
 using Terraria.ID;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
     /// <summary>
     /// Nothosaur饰品 - 幻龙饰品
     /// </summary>
-    internal class NothosaurPlugins : BasicPlugins
+    public class NothosaurPlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Lime; // 绿色稀有度
             Item.value = Item.sellPrice(gold: 10); // 售价10金币
+            base.SetDefaults();    
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -28,7 +26,7 @@ namespace Moreplugins.Content.Items.Accessories
             player.waterWalk = true;
 
             // 标记饰品已装备
-            player.GetModPlayer<PluginsPlayer>().nothosaurEquipped = true;
+            player.MPPlayer().nothosaurEquipped = true;
         }
     }
 }

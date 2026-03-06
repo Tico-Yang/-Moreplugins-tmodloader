@@ -4,24 +4,22 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
     /// <summary>
     /// Outdoorsurvivalkit饰品 - 户外生存装置
     /// </summary>
-    internal class OutdoorsurvivalkitPlugins : BasicPlugins
+    public class OutdoorsurvivalkitPlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Pink; // 粉色稀有度
             Item.value = Item.sellPrice(gold: 10); // 售价10金币
-        }
+            base.SetDefaults();
 
+        }
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -40,7 +38,7 @@ namespace Moreplugins.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             base.UpdateAccessory(player, hideVisual);
-            player.GetModPlayer<PluginsPlayer>().kitEquipped = true;
+            player.MPPlayer().kitEquipped = true;
         }
     }
 }

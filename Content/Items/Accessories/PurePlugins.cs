@@ -2,22 +2,20 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
     /// <summary>
     /// Pure饰品 - 纯净
     /// </summary>
-    internal class PurePlugins : BasicPlugins
+    public class PurePlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Yellow; // 黄色稀有度
             Item.value = Item.sellPrice(gold: 20); // 售价20金币
+            base.SetDefaults();    
         }
 
         public override void AddRecipes()
@@ -32,7 +30,7 @@ namespace Moreplugins.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             base.UpdateAccessory(player, hideVisual);
-            player.GetModPlayer<PluginsPlayer>().pureEquipped = true;
+            player.MPPlayer().pureEquipped = true;
 
             // 增加2最大仆从数量
             player.maxMinions += 2;

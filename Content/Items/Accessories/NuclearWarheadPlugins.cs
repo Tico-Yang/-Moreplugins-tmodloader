@@ -4,22 +4,20 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
     /// <summary>
     /// NuclearWarhead饰品 - 双头核弹
     /// </summary>
-    internal class NuclearWarheadPlugins : BasicPlugins
+    public class NuclearWarheadPlugins : BasicPlugins
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Red; // 红色稀有度
             Item.value = Item.sellPrice(gold: 50); // 售价50金币
+            base.SetDefaults();    
         }
         public override void AddRecipes()
         {
@@ -36,7 +34,7 @@ namespace Moreplugins.Content.Items.Accessories
         {
             // 标记饰品已装备
             base.UpdateAccessory(player, hideVisual);
-            player.GetModPlayer<PluginsPlayer>().nuclearWarheadEquipped = true;
+            player.MPPlayer().nuclearWarheadEquipped = true;
         }
     }
 }

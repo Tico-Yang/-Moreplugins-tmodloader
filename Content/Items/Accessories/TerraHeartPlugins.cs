@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Moreplugins.Content.Players;
+using Moreplugins.Core.Utilities;
 
 namespace Moreplugins.Content.Items.Accessories
 {
@@ -12,18 +13,15 @@ namespace Moreplugins.Content.Items.Accessories
     {
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.maxStack = 1;
-            Item.accessory = true; // 标记为饰品
             Item.rare = ItemRarityID.Yellow; // 金色稀有度
             Item.value = Item.sellPrice(gold: 50); // 售价50金币
+            base.SetDefaults();
         }
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<DuskPlugins>())      // Dusk饰品
-                .AddIngredient(ModContent.ItemType<PurePlugins>())      // Pure饰品
+                .AddIngredient(ItemType<DuskPlugins>())      // Dusk饰品
+                .AddIngredient(ItemType<PurePlugins>())      // Pure饰品
                 .AddIngredient(ItemID.DestroyerEmblem, 1) // 毁灭者徽章
                 .AddTile(TileID.TinkerersWorkbench)               // 工匠作坊合成
                 .Register();
@@ -53,7 +51,7 @@ namespace Moreplugins.Content.Items.Accessories
             player.maxMinions += 2;
 
             // 标记饰品已装备
-            player.GetModPlayer<PluginsPlayer>().terraHeartEquipped = true;
+            player.MPPlayer().terraHeartEquipped = true;
         }
     }
 }

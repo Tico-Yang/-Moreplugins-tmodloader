@@ -7,10 +7,12 @@ namespace Moreplugins.Assets.Textures
         public override void Load()
         {
             LoadParticleTextures();
+            LoadGeneral();
         }
         public override void Unload()
         {
             UnloadParticleTextures();
+            UnloadGeneral();
         }
     }
 }
