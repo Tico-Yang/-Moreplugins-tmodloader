@@ -83,6 +83,10 @@ namespace Moreplugins.Content.Players
         private int beeTimer;
         private int hornetProjectileId1 = -1; // 存储第一个黄蜂的projectile ID
         private int hornetProjectileId2 = -1; // 存储第二个黄蜂的projectile ID
+        // 姜饼人插件用
+        public bool gingerbreadmanPluginsEquipped;
+        public bool hasUsedEffect = false;
+        public int dieTimer;
         #endregion
 
         public override void ResetEffects()
@@ -110,12 +114,30 @@ namespace Moreplugins.Content.Players
             unityEquipped = false;
             terraHeartEquipped = false;
             vibrissaEquipped = false;
+            gingerbreadmanPluginsEquipped = false;
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
         {
             // 雷管插件逻辑
             if (detonatorPluginsEquipped)
+            {
                 Projectile.NewProjectile(Player.GetSource_Death(), Player.Center, Vector2.Zero, ProjectileType<DetonatorPluginsProjectile>(), 666, 5f, Player.whoAmI);
+                return true;
+            }
+
+            // 姜饼人插件逻辑
+            if (gingerbreadmanPluginsEquipped && !hasUsedEffect)
+            {
+                Player.Heal(Player.statLifeMax2);
+                hasUsedEffect = true;
+                return false;
+            }
+            if (hasUsedEffect)
+            {
+                hasUsedEffect = false;
+                dieTimer = 0;
+                return true;
+            }
             return true;
         }
                 public override void Initialize()

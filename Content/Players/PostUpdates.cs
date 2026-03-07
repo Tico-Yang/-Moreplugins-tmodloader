@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
@@ -21,6 +22,12 @@ namespace Moreplugins.Content.Players
                 SoundEngine.PlaySound(DefaultSound);
             }
             soundAccOld = soundAcc;
+
+            if (hasUsedEffect)
+            {
+                dieTimer++;
+                if (dieTimer % 60 == 0) { Player.statLife -= dieTimer / 60; }
+            }
         }
         public void BudPluginsEffect()
         {

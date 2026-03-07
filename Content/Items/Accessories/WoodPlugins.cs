@@ -17,7 +17,7 @@ namespace Moreplugins.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             woodPluginsTime++;
-            if(woodPluginsTime >= 1)
+            if(woodPluginsTime >= 1800)
                 if(Main.rand.NextBool(4))
                 {
                     player.AddBuff(BuffID.Tipsy, 1800);
